@@ -44,6 +44,7 @@ import officerProfilePictures from "../data/officerProfilePictures.json";
                                     data-name={member.name}
                                     data-position={member.position}
                                     data-dept={dept.name}
+                                    data-image={officerProfilePictures[member.name] || ''}
                                 >
                                     <div class="flex-shrink-0">
                                         {officerProfilePictures[member.name] ? (
@@ -189,10 +190,8 @@ import officerProfilePictures from "../data/officerProfilePictures.json";
             // Reset File Input & Preview
             if (fileInput) fileInput.value = '';
             
-            // CHECK JSON DATA FOR EXISTING IMAGE
-            // We cast the imported JSON to any to avoid simple TS indexing errors in this context
-            const pictures = officerProfilePictures as Record<string, string>;
-            const existingImage = name ? pictures[name] : null;
+            // Get existing image from data attribute
+            const existingImage = item.getAttribute('data-image');
 
             if (currentImage && noImagePlaceholder) {
                 if (existingImage) {
