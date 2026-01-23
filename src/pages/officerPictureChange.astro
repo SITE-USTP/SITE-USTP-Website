@@ -46,9 +46,17 @@ import officerProfilePictures from "../data/officerProfilePictures.json";
                                     data-dept={dept.name}
                                 >
                                     <div class="flex-shrink-0">
-                                        <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold group-hover:bg-blue-200 group-hover:text-blue-700 transition-colors">
-                                            {member.position.charAt(0)}
-                                        </div>
+                                        {officerProfilePictures[member.name] ? (
+                                            <img 
+                                                src={officerProfilePictures[member.name]} 
+                                                alt={member.name} 
+                                                class="h-10 w-10 rounded-full object-cover border border-gray-200 group-hover:border-blue-300"
+                                            />
+                                        ) : (
+                                            <div class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold group-hover:bg-blue-200 group-hover:text-blue-700 transition-colors">
+                                                {member.position.charAt(0)}
+                                            </div>
+                                        )}
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p class="text-sm font-medium text-gray-900 truncate">{member.position}</p>
