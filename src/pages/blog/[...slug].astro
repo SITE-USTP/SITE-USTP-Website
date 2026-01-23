@@ -1,0 +1,67 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<MainLayout title={post.data.title} description={post.data.description}>
+    <article class="bg-white overflow-hidden">
+        <!-- Header -->
+        <header class="relative pt-16 pb-12 bg-gray-50">
+            <div class="max-w-prose mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <span
+                        class="block text-base text-center text-blue-600 font-semibold tracking-wide uppercase"
+                    >
+                        {post.data.tags && post.data.tags.join(", ")}
+                    </span>
+                    <h1
+                        class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                    >
+                        {post.data.title}
+                    </h1>
+                    <div
+                        class="mt-4 flex items-center justify-center text-gray-500"
+                    >
+                        <span class="mr-2">By {post.data.author}</span>
+                        &middot;
+                        <span class="ml-2"
+                            ><FormattedDate date={post.data.pubDate} /></span
+                        >
+                    </div>
+                </div>
+                {
+                    post.data.heroImage && (
+                        <div class="mt-8">
+                            <img
+                                class="w-full rounded-lg shadow-lg"
+                                src={post.data.heroImage}
+                                alt=""
+                            />
+                        </div>
+                    )
+                }
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="relative px-4 sm:px-6 lg:px-8 py-10">
+            <div class="prose prose-lg prose-blue mx-auto">
+                <Content />
+            </div>
+        </div>
+    </article>
+</MainLayout>

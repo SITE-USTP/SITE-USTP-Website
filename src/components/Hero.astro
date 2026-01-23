@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import bgTemplate from "../assets/bg-template.jpg";
+---
+
+<section
+    class="relative min-h-screen flex flex-col justify-center bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${bgTemplate.src});`}
+>
+    <!-- Darker Overlay for readability -->
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="max-w-3xl">
+            <h1
+                class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 leading-tight"
+            >
+                <span
+                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-lg"
+                >
+                    Empowering Students,
+                </span>
+                <br />
+                <span
+                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-lg"
+                >
+                    Building Leaders
+                </span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-white font-medium mb-8">
+                Innovate. Engage. Lead
+            </p>
+        </div>
+    </div>
+
+    <!-- Cloud/Fade Effect at Bottom -->
+    <div
+        class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-10"
+    >
+    </div>
+</section>

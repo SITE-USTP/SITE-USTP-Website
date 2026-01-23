@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  resources: CollectionEntry<"resources">[];
+}
+
+const { resources } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {
+    resources.map((resource) => (
+      <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <span
+            class={`px-2 py-1 text-xs font-semibold rounded-full 
+          ${
+            resource.data.category === "Academic"
+              ? "bg-blue-100 text-blue-800"
+              : resource.data.category === "Software"
+                ? "bg-green-100 text-green-800"
+                : "bg-gray-100 text-gray-800"
+          }`}
+          >
+            {resource.data.category}
+          </span>
+        </div>
+
+        <h3
+          class="text-lg font-medium text-gray-900 mb-2 truncate"
+          title={resource.data.title}
+        >
+          {resource.data.title}
+        </h3>
+
+        <p class="text-sm text-gray-500 mb-4 flex-grow line-clamp-3">
+          {resource.data.description}
+        </p>
+
+        <a
+          href={resource.data.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors w-full"
+        >
+          Download / View
+        </a>
+      </div>
+    ))
+  }
+</div>

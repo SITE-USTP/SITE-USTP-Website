@@ -1,0 +1,25 @@
+[2m17:32:20[22m [34m[content][39m Syncing content
+[33m[1m17:32:20[22m [WARN] [glob-loader][39m The base directory "C:\Projects\SITE-Website\src\content\officers\" does not exist.
+[2m17:32:20[22m [34m[content][39m Synced content
+[2m17:32:20[22m [34m[types][39m Generated [2m342ms[22m
+[2m17:32:20[22m [34m[check][39m Getting diagnostics for Astro files in C:\Projects\SITE-Website...
+[96msrc/components/Header.astro[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'SITE_TITLE' is declared but its value is never read.
+
+[7m2[0m import { SITE_TITLE } from '../consts';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/MainLayout.astro[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'BaseHead' is declared but its value is never read.
+
+[7m2[0m import BaseHead from '../components/BaseHead.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/resources/index.astro[0m:[93m2[0m:[93m24[0m - [91merror[0m[90m ts(2307): [0mCannot find module '../layouts/MainLayout.astro' or its corresponding type declarations.
+
+[7m2[0m import MainLayout from '../layouts/MainLayout.astro';
+[7m [0m [91m                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (24 files): 
+- 1 error
+- 0 warnings
+- 2 hints
+

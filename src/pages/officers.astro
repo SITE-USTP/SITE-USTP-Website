@@ -1,0 +1,39 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import OfficerCard from "../components/OfficerCard.astro";
+import { getCollection } from "astro:content";
+
+const officers = await getCollection("officers");
+---
+
+<MainLayout title="Our Team | SITE">
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Meet the Team
+                </h1>
+                <p class="mt-4 text-xl text-gray-500">
+                    The dedicated students behind SITE.
+                </p>
+            </div>
+
+            {
+                officers.length > 0 ? (
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {officers.map((officer) => (
+                            <OfficerCard officer={officer} />
+                        ))}
+                    </div>
+                ) : (
+                    <div class="text-center py-20">
+                        <p class="text-gray-500 text-lg">
+                            Officer data is currently being updated. Please
+                            check back later.
+                        </p>
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</MainLayout>

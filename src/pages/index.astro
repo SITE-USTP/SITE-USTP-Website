@@ -1,0 +1,148 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import SDGCard from "../components/SDGCard.astro";
+---
+
+<MainLayout>
+    <Hero />
+
+    <!-- SDGs Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-left mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+                    Our Commitment to UN Sustainable Development Goals
+                </h2>
+            </div>
+
+            <div
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center"
+            >
+                <!-- 12, 9, 10, 4, 8 -->
+                <SDGCard
+                    sdgNumber={12}
+                    title="Responsible Consumption and Production"
+                    description="Ensuring sustainable consumption and production patterns."
+                    colorClass="bg-[#bf8b2e]"
+                />
+                <SDGCard
+                    sdgNumber={9}
+                    title="Industry, Innovation and Infrastructure"
+                    description="Building resilient infrastructure, promoting inclusive and sustainable industrialization."
+                    colorClass="bg-[#fd6925]"
+                />
+                <SDGCard
+                    sdgNumber={10}
+                    title="Reduced Inequalities"
+                    description="Reducing inequality within and among countries."
+                    colorClass="bg-[#dd1367]"
+                />
+                <SDGCard
+                    sdgNumber={4}
+                    title="Quality Education"
+                    description="Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities for all."
+                    colorClass="bg-[#c5192d]"
+                />
+                <SDGCard
+                    sdgNumber={8}
+                    title="Decent Work and Economic Growth"
+                    description="Promoting sustained, inclusive and sustainable economic growth, full and productive employment."
+                    colorClass="bg-[#a21942]"
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Technical Hub Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2
+                    class="text-base text-blue-600 font-semibold tracking-wide uppercase"
+                >
+                    Student Hub
+                </h2>
+                <p
+                    class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                >
+                    Everything a BSIT Student Needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Digital Resource Hub -->
+                <div
+                    class="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
+                >
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        📚 Digital Resource Hub
+                    </h3>
+                    <p class="text-gray-500 mb-6">
+                        Access academic materials, syllabi, and software guides
+                        curated for your success.
+                    </p>
+                    <a
+                        href="/resources"
+                        class="text-blue-600 font-medium hover:underline"
+                        >Browse Resources &rarr;</a
+                    >
+                </div>
+
+                <!-- Transparency Dashboard -->
+                <div
+                    class="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
+                >
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        📊 Transparency Dashboard
+                    </h3>
+                    <p class="text-gray-500 mb-6">
+                        View financial reports, meeting minutes, and official
+                        announcements. We value accountability.
+                    </p>
+                    <a
+                        href="/transparency"
+                        class="text-blue-600 font-medium hover:underline"
+                        >View Reports &rarr;</a
+                    >
+                </div>
+
+                <!-- Event Management -->
+                <div
+                    class="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
+                >
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        🗓️ Event Management
+                    </h3>
+                    <p class="text-gray-500 mb-6">
+                        Keep track of upcoming workshops, register digitally,
+                        and never miss an event.
+                    </p>
+                    <a
+                        href="/events"
+                        class="text-blue-600 font-medium hover:underline"
+                        >See Upcoming Events &rarr;</a
+                    >
+                </div>
+
+                <!-- Student Showcase (Portfolio) -->
+                <div
+                    class="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
+                >
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        🚀 Student Portfolio Showcase
+                    </h3>
+                    <p class="text-gray-500 mb-6">
+                        Showcase your best projects and see what your peers are
+                        building.
+                    </p>
+                    <a
+                        href="#"
+                        class="text-blue-600 font-medium hover:underline"
+                        >Coming Soon &rarr;</a
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+</MainLayout>
