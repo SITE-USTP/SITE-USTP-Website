@@ -1,5 +1,5 @@
 <div align="center">
-
+  <img src="public/SITE-logo.png" alt="SITE USTP Logo" width="150" />
   <h1>SITE USTP Website</h1>
   
   <p>
