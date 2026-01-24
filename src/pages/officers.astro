@@ -1,9 +1,21 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import officersData from "../data/officers.json";
-import officerProfilePictures from "../data/officerProfilePictures.json";
+import { db } from "../lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const { academicYear, departments } = officersData;
+
+let officerProfilePictures: any = {};
+try {
+    const docRef = doc(db, "settings", "officerProfilePictures");
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        officerProfilePictures = docSnap.data();
+    }
+} catch (e) {
+    console.error("Failed to fetch officer pictures:", e);
+}
 ---
 
 <MainLayout title="Our Team | SITE">
