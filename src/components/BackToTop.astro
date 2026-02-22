@@ -1,0 +1,72 @@
+---
+// BackToTop.astro
+---
+
+<button
+    id="back-to-top"
+    class="fixed bottom-6 right-6 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center group"
+    aria-label="Back to top"
+>
+    <svg
+        class="w-6 h-6 transition-transform group-hover:-translate-y-1"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
+<script>
+    const setupBackToTop = () => {
+        const backToTopButton = document.getElementById("back-to-top");
+        if (!backToTopButton) return;
+
+        const toggleBackToTop = () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "translate-y-4",
+                );
+                backToTopButton.classList.add(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-y-0",
+                );
+            } else {
+                backToTopButton.classList.add(
+                    "opacity-0",
+                    "pointer-events-none",
+                    "translate-y-4",
+                );
+                backToTopButton.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                    "translate-y-0",
+                );
+            }
+        };
+
+        window.addEventListener("scroll", toggleBackToTop);
+
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    };
+
+    // Run setup on initial load
+    setupBackToTop();
+
+    // Re-run setup on View Transitions navigation if enabled later
+    document.addEventListener("astro:page-load", () => {
+        setupBackToTop();
+    });
+</script>
