@@ -3,7 +3,7 @@ import siteLogo from "../assets/SITE-logo.png";
 ---
 
 <header
-    class="fixed top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-gray-200"
+    class="fixed top-0 z-50 w-full backdrop-blur-md bg-white/80 shadow-sm md:shadow-none"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -86,29 +86,30 @@ import siteLogo from "../assets/SITE-logo.png";
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden" id="mobile-menu">
-        <div
-            class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100 shadow-lg"
-        >
+    <!-- Mobile Menu Dropdown -->
+    <div
+        class="hidden md:hidden absolute top-[4.5rem] right-4 w-40 bg-white rounded-lg shadow-xl overflow-hidden transition-all transform origin-top-right border border-gray-100"
+        id="mobile-menu"
+    >
+        <div class="py-2 flex flex-col">
             <a
                 href="/events"
-                class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
                 >Events</a
             >
             <a
                 href="/news"
-                class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
                 >News</a
             >
             <a
                 href="/resources"
-                class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
                 >Resources</a
             >
             <a
                 href="/officers"
-                class="text-gray-700 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium"
+                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
                 >Officers</a
             >
         </div>

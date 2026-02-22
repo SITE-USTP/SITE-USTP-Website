@@ -4,13 +4,13 @@ import bgTemplate from "../assets/SITEcover_img.png";
 ---
 
 <section
-    class="relative min-h-screen flex flex-col justify-center overflow-hidden"
+    class="relative min-h-[50vh] md:min-h-screen flex flex-col justify-end md:justify-center overflow-hidden"
 >
     <!-- Background Image -->
     <Image
         src={bgTemplate}
         alt="SITE USTP Background"
-        class="absolute inset-0 w-full h-full object-cover z-0"
+        class="absolute inset-0 w-full h-full object-cover z-0 pt-16 md:pt-0 object-center"
         loading="eager"
         quality={85}
     />
@@ -18,33 +18,43 @@ import bgTemplate from "../assets/SITEcover_img.png";
     <!-- Darker Overlay for readability -->
     <div class="absolute inset-0 bg-black/40 z-[1]"></div>
 
+    <!-- Bottom fade for mobile so the text stays fully readable below the image -->
+    <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 md:from-black/80 via-black/20 to-transparent z-[1] h-[60%] md:h-1/2 mt-auto"
+    >
+    </div>
+
     <!-- Hero Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8 md:pb-0"
+    >
         <div class="max-w-3xl">
             <h1
-                class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 leading-tight"
+                class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-2 md:mb-4"
             >
                 <span
-                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-lg"
+                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-md md:drop-shadow-lg"
                 >
                     Empowering Students,
                 </span>
                 <br />
                 <span
-                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-lg"
+                    class="bg-gradient-to-r from-[#1e4a8f] via-[#2e6bc4] to-[#00a3e0] bg-clip-text text-transparent drop-shadow-md md:drop-shadow-lg"
                 >
                     Building Leaders
                 </span>
             </h1>
-            <p class="text-2xl md:text-3xl text-white font-medium mb-8">
-                Innovate. Engage. Lead
+            <p
+                class="text-base sm:text-2xl md:text-3xl text-white font-medium mb-2 md:mb-8 tracking-wide drop-shadow-md"
+            >
+                Innovate. Engage. Lead.
             </p>
         </div>
     </div>
 
     <!-- Cloud/Fade Effect at Bottom -->
     <div
-        class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent z-10"
+        class="absolute bottom-0 left-0 w-full h-8 sm:h-20 bg-gradient-to-t from-white to-transparent z-10"
     >
     </div>
 </section>

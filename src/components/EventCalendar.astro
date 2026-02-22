@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 const allEvents = await getCollection("events");
 const eventsData = allEvents.map((event) => ({
-    id: event.slug,
+    id: event.id,
     title: event.data.title,
     date: new Date(event.data.date).toISOString().split("T")[0], // YYYY-MM-DD
     time: event.data.time,
@@ -12,7 +12,7 @@ const eventsData = allEvents.map((event) => ({
 ---
 
 <div
-    class="bg-white rounded-xl shadow-sm border border-gray-200 mb-12 flex flex-col overflow-hidden max-w-5xl mx-auto aspect-square md:aspect-video min-h-[500px]"
+    class="bg-white rounded-xl shadow-sm border border-gray-200 mb-12 flex flex-col overflow-hidden max-w-5xl mx-auto md:aspect-video min-h-[400px] sm:min-h-[500px]"
 >
     <!-- Calendar Header -->
     <div
@@ -63,15 +63,36 @@ const eventsData = allEvents.map((event) => ({
 
     <!-- Calendar Grid -->
     <div
-        class="bg-gray-200 grid grid-cols-7 gap-px text-center text-xs font-semibold leading-6 text-gray-700"
+        class="bg-gray-200 grid grid-cols-7 gap-px text-center text-[10px] sm:text-xs font-semibold leading-6 text-gray-700"
     >
-        <div class="bg-white py-2">Sun</div>
-        <div class="bg-white py-2">Mon</div>
-        <div class="bg-white py-2">Tue</div>
-        <div class="bg-white py-2">Wed</div>
-        <div class="bg-white py-2">Thu</div>
-        <div class="bg-white py-2">Fri</div>
-        <div class="bg-white py-2">Sat</div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Sun</span><span class="sm:hidden"
+                >S</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Mon</span><span class="sm:hidden"
+                >M</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Tue</span><span class="sm:hidden"
+                >T</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Wed</span><span class="sm:hidden"
+                >W</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Thu</span><span class="sm:hidden"
+                >T</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Fri</span><span class="sm:hidden"
+                >F</span>
+        </div>
+        <div class="bg-white py-1 sm:py-2">
+            <span class="hidden sm:inline">Sat</span><span class="sm:hidden"
+                >S</span>
+        </div>
     </div>
 
     <div
@@ -138,10 +159,10 @@ const eventsData = allEvents.map((event) => ({
                     today.getFullYear() === year;
 
                 const dayCell = document.createElement("div");
-                dayCell.className = `bg-white p-2 border-t-2 transition-colors overflow-hidden ${isToday ? "border-blue-500 bg-blue-50/30" : "border-transparent hover:bg-gray-50"}`;
+                dayCell.className = `bg-white p-1 md:p-2 border-t-2 transition-colors overflow-hidden ${isToday ? "border-blue-500 bg-blue-50/30" : "border-transparent hover:bg-gray-50"}`;
 
                 const dateHeader = document.createElement("div");
-                dateHeader.className = `font-semibold text-sm mb-1 ${isToday ? "text-blue-600" : "text-gray-900"}`;
+                dateHeader.className = `font-semibold text-[10px] sm:text-sm mb-0.5 sm:mb-1 ${isToday ? "text-blue-600" : "text-gray-900"}`;
                 dateHeader.textContent = i;
                 dayCell.appendChild(dateHeader);
 
@@ -156,10 +177,10 @@ const eventsData = allEvents.map((event) => ({
 
                     dayEvents.forEach((event) => {
                         const eventItem = document.createElement("a");
-                        eventItem.href = "/events"; // Basic link to the events list below
+                        eventItem.href = `/events/${event.id}/`;
                         eventItem.title = event.title;
                         eventItem.className =
-                            "block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded truncate hover:bg-blue-200 transition-colors";
+                            "block px-1 sm:px-2 py-0.5 sm:py-1 text-[9px] sm:text-xs font-medium bg-blue-100 text-blue-700 rounded truncate hover:bg-blue-200 transition-colors";
                         eventItem.textContent = event.title;
                         eventsList.appendChild(eventItem);
                     });
