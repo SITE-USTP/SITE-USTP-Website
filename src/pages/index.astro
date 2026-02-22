@@ -9,7 +9,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 // Fetch and prepare data
 const events = await getCollection("events");
 events.sort(
-    (a, b) => new Date(a.data.date).valueOf() - new Date(b.data.date).valueOf(),
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 );
 const upcomingEvents = events.slice(0, 3);
 
@@ -108,21 +108,85 @@ const formatMonthName = (date: Date | string) => {
                                     class={`w-full flex items-center justify-center p-6 text-white ${index % 2 === 0 ? "bg-red-600" : "bg-gray-800"}`}
                                 >
                                     <div class="text-center">
-                                        <span class="block text-3xl font-bold">
-                                            {formatDateNumber(event.data.date)}
-                                        </span>
-                                        <span class="block text-lg uppercase tracking-wide">
-                                            {formatMonthName(event.data.date)}
-                                        </span>
+                                        {event.data.endDate &&
+                                        new Date(
+                                            event.data.date,
+                                        ).toDateString() !==
+                                            new Date(
+                                                event.data.endDate,
+                                            ).toDateString() ? (
+                                            <div class="flex flex-col items-center">
+                                                <div class="flex items-center gap-2 mb-0.5">
+                                                    <span class="text-3xl font-bold">
+                                                        {formatDateNumber(
+                                                            event.data.date,
+                                                        )}
+                                                    </span>
+                                                    <span class="text-xl font-light opacity-60">
+                                                        &ndash;
+                                                    </span>
+                                                    <span class="text-3xl font-bold">
+                                                        {formatDateNumber(
+                                                            event.data.endDate,
+                                                        )}
+                                                    </span>
+                                                </div>
+                                                <span class="text-lg uppercase tracking-wider font-medium opacity-90">
+                                                    {formatMonthName(
+                                                        event.data.date,
+                                                    )}
+                                                    {new Date(
+                                                        event.data.date,
+                                                    ).getMonth() !==
+                                                        new Date(
+                                                            event.data.endDate,
+                                                        ).getMonth() &&
+                                                        ` - ${formatMonthName(event.data.endDate)}`}
+                                                </span>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <span class="block text-3xl font-bold">
+                                                    {formatDateNumber(
+                                                        event.data.date,
+                                                    )}
+                                                </span>
+                                                <span class="block text-lg uppercase tracking-wide">
+                                                    {formatMonthName(
+                                                        event.data.date,
+                                                    )}
+                                                </span>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                                 <div class="p-5 flex flex-col flex-1">
                                     <h4 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                                        {event.data.title}
+                                        <a
+                                            href={`/events/${event.id}/`}
+                                            class="hover:text-blue-600 transition-colors"
+                                        >
+                                            {event.data.title}
+                                        </a>
                                     </h4>
-                                    <div class="flex items-center text-xs text-gray-500 mb-4 flex-1">
+                                    <div class="flex items-center text-xs text-gray-500 mb-4 w-full">
                                         <svg
-                                            class="h-3 w-3 mr-1"
+                                            class="h-3 w-3 mr-1 shrink-0"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span class="truncate">
+                                            {event.data.time || "Time TBA"}
+                                        </span>
+                                        <span class="mx-1 shrink-0">•</span>
+                                        <svg
+                                            class="h-3 w-3 mr-1 shrink-0"
                                             fill="currentColor"
                                             viewBox="0 0 20 20"
                                         >
@@ -138,7 +202,7 @@ const formatMonthName = (date: Date | string) => {
                                     </div>
                                     <div class="mt-auto">
                                         <a
-                                            href="/events"
+                                            href={`/events/${event.id}/`}
                                             class="text-sm text-blue-600 font-semibold hover:underline"
                                         >
                                             More info &rarr;
@@ -209,7 +273,7 @@ const formatMonthName = (date: Date | string) => {
                                     </p>
                                     <div class="mt-auto">
                                         <a
-                                            href={`/news/${post.slug}`}
+                                            href={`/news/${post.id}`}
                                             class="text-sm text-blue-600 font-semibold hover:underline"
                                         >
                                             Read article &rarr;

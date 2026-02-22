@@ -1,0 +1,316 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { render } from "astro:content";
+import siteLogo from "../../assets/SITE-logo.png";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+    const events = await getCollection("events");
+    return events.map((event) => ({
+        params: { slug: event.id },
+        props: event,
+    }));
+}
+type Props = CollectionEntry<"events">;
+
+const event = Astro.props;
+const { Content } = await render(event);
+---
+
+<MainLayout title={`${event.data.title} | SITE Events`}>
+    <article class="bg-gray-50 pb-20 pt-10 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumbs -->
+            <div
+                class="flex items-center gap-2 text-sm text-gray-500 mb-8 font-medium uppercase tracking-wider"
+            >
+                <a href="/" class="hover:text-blue-600 transition-colors"
+                    >Home</a
+                >
+                <span>&rsaquo;</span>
+                <a href="/events" class="hover:text-blue-600 transition-colors"
+                    >Events</a
+                >
+                <span>&rsaquo;</span>
+                <span class="text-gray-900 truncate" title={event.data.title}
+                    >{event.data.title}</span
+                >
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Left Column (Poster & Host Info) -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Event Poster Container -->
+                    <div
+                        class="aspect-square bg-gray-200 rounded-2xl overflow-hidden shadow-md border border-gray-200 flex items-center justify-center p-1"
+                    >
+                        {
+                            event.data.heroImage ? (
+                                <img
+                                    src={event.data.heroImage}
+                                    alt={event.data.title}
+                                    class="w-full h-full object-cover rounded-xl"
+                                />
+                            ) : (
+                                <div class="text-gray-400 flex flex-col items-center">
+                                    <svg
+                                        class="w-16 h-16 mb-2"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="1.5"
+                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                        />
+                                    </svg>
+                                    <span class="text-sm font-medium">
+                                        Event Poster
+                                    </span>
+                                </div>
+                            )
+                        }
+                    </div>
+
+                    <!-- Hosted By -->
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"
+                    >
+                        <h3
+                            class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4"
+                        >
+                            Hosted By
+                        </h3>
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center overflow-hidden shrink-0"
+                            >
+                                <img
+                                    src={siteLogo.src}
+                                    alt="SITE Logo"
+                                    class="w-full h-full object-contain p-1"
+                                />
+                            </div>
+                            <div>
+                                <p
+                                    class="text-sm font-bold text-gray-900 leading-tight"
+                                >
+                                    Society of Information Technology
+                                    Enthusiasts - USTP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Event Details) -->
+                <div class="lg:col-span-8">
+                    <div
+                        class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-gray-200"
+                    >
+                        <!-- Title -->
+                        <h1
+                            class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-8 tracking-tight"
+                        >
+                            {event.data.title}
+                        </h1>
+
+                        <!-- Date & Location Grid -->
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8 border-b border-gray-100 mb-8"
+                        >
+                            <!-- Date/Time -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="mt-1 bg-gray-50 border border-gray-100 p-2.5 rounded-xl text-gray-600 shadow-sm"
+                                >
+                                    <svg
+                                        class="w-6 h-6 text-blue-600"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                        ></path></svg
+                                    >
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-lg">
+                                        <FormattedDate date={event.data.date} />
+                                        {
+                                            event.data.endDate &&
+                                                new Date(
+                                                    event.data.date,
+                                                ).toDateString() !==
+                                                    new Date(
+                                                        event.data.endDate,
+                                                    ).toDateString() && (
+                                                    <span>
+                                                        {" "}
+                                                        -{" "}
+                                                        <FormattedDate
+                                                            date={
+                                                                event.data
+                                                                    .endDate
+                                                            }
+                                                        />
+                                                    </span>
+                                                )
+                                        }
+                                    </p>
+                                    <p
+                                        class="text-sm text-gray-500 font-medium"
+                                    >
+                                        {event.data.time || "Time TBA"}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="mt-1 bg-gray-50 border border-gray-100 p-2.5 rounded-xl text-gray-600 shadow-sm"
+                                >
+                                    <svg
+                                        class="w-6 h-6 text-blue-600"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"
+                                        ></path><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        ></path></svg
+                                    >
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-lg">
+                                        {event.data.location}
+                                    </p>
+                                    <p
+                                        class="text-sm text-blue-600 font-medium cursor-pointer hover:underline"
+                                    >
+                                        {
+                                            event.data.city ||
+                                                "Cagayan de Oro City"
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Registration Block (Retained Design Request) -->
+                        {
+                            event.data.registrationLink && (
+                                <div class="mb-10 bg-[#F4F8FF] border border-blue-100 rounded-xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+                                    <div>
+                                        <h3 class="text-blue-900 font-bold text-xl mb-1">
+                                            Join this Event
+                                        </h3>
+                                        <p class="text-blue-700 text-sm md:text-base">
+                                            Secure your spot by registering for
+                                            this event.
+                                        </p>
+                                    </div>
+                                    <a
+                                        href={event.data.registrationLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-bold rounded-lg shadow-sm text-white bg-[#2563EB] hover:bg-blue-800 transition-colors w-full sm:w-auto text-center"
+                                    >
+                                        Register Now
+                                    </a>
+                                </div>
+                            )
+                        }
+
+                        <!-- About Event Header -->
+                        <h2
+                            class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"
+                        >
+                            About Event
+                        </h2>
+
+                        <!-- Article Content -->
+                        <div
+                            class="prose prose-lg prose-blue max-w-none prose-img:rounded-xl prose-headings:font-bold prose-a:text-blue-600 text-gray-700 leading-relaxed"
+                        >
+                            <Content />
+                        </div>
+
+                        <!-- Share Section -->
+                        <div
+                            class="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4"
+                        >
+                            <span
+                                class="text-sm font-bold text-gray-400 uppercase tracking-wider"
+                                >Share</span
+                            >
+                            <div class="flex items-center gap-2">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#1877F2] hover:text-white text-gray-600 transition flex items-center justify-center"
+                                    aria-label="Share to Facebook"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        ></path></svg
+                                    >
+                                </button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#1DA1F2] hover:text-white text-gray-600 transition flex items-center justify-center"
+                                    aria-label="Share to Twitter"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                        ><path
+                                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                                        ></path></svg
+                                    >
+                                </button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 transition flex items-center justify-center p-1.5"
+                                    aria-label="Copy Link"
+                                    onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied!');"
+                                >
+                                    <svg
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="2.5"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                                        ></path></svg
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</MainLayout>
