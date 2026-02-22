@@ -46,7 +46,7 @@ const formatMonthName = (date: Date | string) => {
             </div>
 
             <div
-                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center"
+                class="grid grid-cols-5 gap-1 sm:gap-2 md:grid-cols-3 lg:grid-cols-5 md:gap-8 justify-items-center"
             >
                 <SDGCard
                     sdgNumber={12}
@@ -87,7 +87,9 @@ const formatMonthName = (date: Date | string) => {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Upcoming Events Row -->
             <div class="mb-16">
-                <div class="flex justify-between items-end mb-8">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-8 gap-3 sm:gap-0"
+                >
                     <h3
                         class="text-2xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 inline-block"
                     >
@@ -100,12 +102,12 @@ const formatMonthName = (date: Date | string) => {
                     >
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
                     {
                         upcomingEvents.map((event, index) => (
                             <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full">
                                 <div
-                                    class={`w-full flex items-center justify-center p-6 text-white ${index % 2 === 0 ? "bg-red-600" : "bg-gray-800"}`}
+                                    class={`w-full flex items-center justify-center p-3 sm:p-6 text-white shrink-0 sm:shrink ${index % 2 === 0 ? "bg-red-600" : "bg-gray-800"}`}
                                 >
                                     <div class="text-center">
                                         {event.data.endDate &&
@@ -116,42 +118,45 @@ const formatMonthName = (date: Date | string) => {
                                                 event.data.endDate,
                                             ).toDateString() ? (
                                             <div class="flex flex-col items-center">
-                                                <div class="flex items-center gap-2 mb-0.5">
-                                                    <span class="text-3xl font-bold">
+                                                <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5">
+                                                    <span class="text-2xl sm:text-3xl font-bold">
                                                         {formatDateNumber(
                                                             event.data.date,
                                                         )}
                                                     </span>
-                                                    <span class="text-xl font-light opacity-60">
+                                                    <span class="text-base sm:text-xl font-light opacity-60">
                                                         &ndash;
                                                     </span>
-                                                    <span class="text-3xl font-bold">
+                                                    <span class="text-2xl sm:text-3xl font-bold">
                                                         {formatDateNumber(
                                                             event.data.endDate,
                                                         )}
                                                     </span>
                                                 </div>
-                                                <span class="text-lg uppercase tracking-wider font-medium opacity-90">
-                                                    {formatMonthName(
-                                                        event.data.date,
-                                                    )}
-                                                    {new Date(
-                                                        event.data.date,
-                                                    ).getMonth() !==
-                                                        new Date(
-                                                            event.data.endDate,
-                                                        ).getMonth() &&
-                                                        ` - ${formatMonthName(event.data.endDate)}`}
+                                                <span class="text-sm sm:text-lg uppercase tracking-wider font-medium opacity-90 text-center">
+                                                    <span class="block sm:inline whitespace-nowrap">
+                                                        {formatMonthName(
+                                                            event.data.date,
+                                                        )}
+                                                        {new Date(
+                                                            event.data.date,
+                                                        ).getMonth() !==
+                                                            new Date(
+                                                                event.data
+                                                                    .endDate,
+                                                            ).getMonth() &&
+                                                            ` - ${formatMonthName(event.data.endDate)}`}
+                                                    </span>
                                                 </span>
                                             </div>
                                         ) : (
                                             <>
-                                                <span class="block text-3xl font-bold">
+                                                <span class="block text-3xl font-bold leading-none mb-1 sm:mb-0">
                                                     {formatDateNumber(
                                                         event.data.date,
                                                     )}
                                                 </span>
-                                                <span class="block text-lg uppercase tracking-wide">
+                                                <span class="block text-sm sm:text-lg uppercase tracking-wide">
                                                     {formatMonthName(
                                                         event.data.date,
                                                     )}
@@ -160,8 +165,8 @@ const formatMonthName = (date: Date | string) => {
                                         )}
                                     </div>
                                 </div>
-                                <div class="p-5 flex flex-col flex-1">
-                                    <h4 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                                <div class="p-3 sm:p-5 flex flex-col flex-1">
+                                    <h4 class="text-sm sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2 leading-tight">
                                         <a
                                             href={`/events/${event.id}/`}
                                             class="hover:text-blue-600 transition-colors"
@@ -169,7 +174,7 @@ const formatMonthName = (date: Date | string) => {
                                             {event.data.title}
                                         </a>
                                     </h4>
-                                    <div class="flex items-center text-xs text-gray-500 mb-4 w-full">
+                                    <div class="hidden sm:flex items-center text-xs text-gray-500 mb-4 w-full">
                                         <svg
                                             class="h-3 w-3 mr-1 shrink-0"
                                             fill="currentColor"
@@ -200,10 +205,10 @@ const formatMonthName = (date: Date | string) => {
                                             {event.data.location}
                                         </span>
                                     </div>
-                                    <div class="mt-auto">
+                                    <div class="mt-auto pt-2">
                                         <a
                                             href={`/events/${event.id}/`}
-                                            class="text-sm text-blue-600 font-semibold hover:underline"
+                                            class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline"
                                         >
                                             More info &rarr;
                                         </a>
@@ -217,7 +222,9 @@ const formatMonthName = (date: Date | string) => {
 
             <!-- News / Blog Row -->
             <div>
-                <div class="flex justify-between items-end mb-8">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-8 gap-3 sm:gap-0"
+                >
                     <h3
                         class="text-2xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 inline-block"
                     >
@@ -230,11 +237,11 @@ const formatMonthName = (date: Date | string) => {
                     >
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
                     {
                         recentNews.map((post) => (
                             <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full">
-                                <div class="h-48 overflow-hidden bg-gray-100 flex-shrink-0">
+                                <div class="h-24 sm:h-48 overflow-hidden bg-gray-100 flex-shrink-0">
                                     {post.data.heroImage ? (
                                         <img
                                             src={post.data.heroImage}
@@ -259,22 +266,22 @@ const formatMonthName = (date: Date | string) => {
                                         </div>
                                     )}
                                 </div>
-                                <div class="p-5 flex flex-col flex-1">
+                                <div class="p-3 sm:p-5 flex flex-col flex-1">
                                     <p class="text-xs font-medium text-blue-600 mb-1">
                                         {post.data.tags && post.data.tags[0]
                                             ? post.data.tags[0]
                                             : "News"}
                                     </p>
-                                    <h4 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                                    <h4 class="text-sm sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2 leading-tight">
                                         {post.data.title}
                                     </h4>
-                                    <p class="text-sm text-gray-600 mb-4 flex-1 line-clamp-3">
+                                    <p class="hidden sm:block text-sm text-gray-600 mb-4 flex-1 line-clamp-3">
                                         {post.data.description}
                                     </p>
                                     <div class="mt-auto">
                                         <a
                                             href={`/news/${post.id}`}
-                                            class="text-sm text-blue-600 font-semibold hover:underline"
+                                            class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline"
                                         >
                                             Read article &rarr;
                                         </a>
@@ -288,7 +295,9 @@ const formatMonthName = (date: Date | string) => {
 
             <!-- Resources Row -->
             <div class="mt-16">
-                <div class="flex justify-between items-end mb-8">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 sm:mb-8 gap-3 sm:gap-0"
+                >
                     <h3
                         class="text-2xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 inline-block"
                     >
@@ -304,13 +313,11 @@ const formatMonthName = (date: Date | string) => {
                 {
                     /* Horizontal scrollable container for the 'carousel' effect on smaller screens */
                 }
-                <div
-                    class="flex overflow-x-auto pb-4 gap-6 snap-x snap-mandatory hide-scrollbars md:grid md:grid-cols-3 md:overflow-visible md:-mx-0 -mx-4 px-4 md:px-0"
-                >
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
                     {
                         recentResources.map((resource) => (
-                            <div class="flex-none w-full sm:w-[calc(50%-12px)] md:w-auto snap-center">
-                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col h-full">
+                            <div class="w-full">
+                                <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-3 sm:p-6 flex flex-col h-full">
                                     <div class="flex items-center justify-between mb-4">
                                         <span
                                             class={`px-2 py-1 text-xs font-semibold rounded-full 
@@ -329,13 +336,13 @@ const formatMonthName = (date: Date | string) => {
                                     </div>
 
                                     <h3
-                                        class="text-lg font-medium text-gray-900 mb-2 truncate"
+                                        class="text-sm sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2 line-clamp-2 md:truncate"
                                         title={resource.data.title}
                                     >
                                         {resource.data.title}
                                     </h3>
 
-                                    <p class="text-sm text-gray-500 mb-4 flex-grow line-clamp-3">
+                                    <p class="hidden sm:block text-sm text-gray-500 mb-4 flex-grow line-clamp-3">
                                         {resource.data.description}
                                     </p>
 
@@ -343,9 +350,12 @@ const formatMonthName = (date: Date | string) => {
                                         href={resource.data.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="mt-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors w-full"
+                                        class="mt-auto inline-flex items-center justify-center px-1 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors w-full"
                                     >
-                                        Download / View
+                                        <span class="sm:hidden">Download</span>
+                                        <span class="hidden sm:inline">
+                                            Download / View
+                                        </span>
                                     </a>
                                 </div>
                             </div>
