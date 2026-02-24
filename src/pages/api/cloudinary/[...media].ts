@@ -1,6 +1,7 @@
 import { createMediaHandler } from "next-tinacms-cloudinary/dist/handlers";
 import { isAuthorized } from "@tinacms/auth";
 import type { APIRoute } from "astro";
+import { Readable } from "stream";
 
 export const ALL: APIRoute = async ({ request, params }) => {
     const mediaHandler = createMediaHandler({
@@ -51,15 +52,24 @@ export const ALL: APIRoute = async ({ request, params }) => {
         },
     };
 
-    const mockReq: any = {
-        method: request.method,
-        query: {
-            ...query,
-            media: params.media?.split("/"),
-        },
-        body: request.method !== "GET" ? await request.json().catch(() => ({})) : {},
-        headers: Object.fromEntries(request.headers.entries()),
+    let mockReq: any;
+    if (request.body) {
+        mockReq = Readable.fromWeb(request.body as any);
+    } else {
+        mockReq = new Readable({
+            read() {
+                this.push(null);
+            },
+        });
+    }
+
+    mockReq.method = request.method;
+    mockReq.query = {
+        ...query,
+        media: params.media?.split("/"),
     };
+    mockReq.headers = Object.fromEntries(request.headers.entries());
+
 
     await mediaHandler(mockReq, mockRes);
 
