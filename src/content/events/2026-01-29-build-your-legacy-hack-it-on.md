@@ -1,5 +1,5 @@
 ---
-title: BUILD YOUR LEGACY! HACK IT ON!
+title: HACK IT ON 2026!
 date: 2026-01-29T11:25:19.964Z
 endDate: 2026-01-31T11:25:22.197Z
 time: '10:00 AM - 5:00 PM'
