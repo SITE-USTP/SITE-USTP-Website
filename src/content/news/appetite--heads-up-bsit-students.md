@@ -3,7 +3,7 @@ title: APPETITE | Heads up BSIT students!
 description: "Get ready to start your morning the IT way! \U0001F4BB\U0001F324️"
 pubDate: 2025-10-09T11:47:53.069Z
 updatedDate: 2025-10-09T11:48:04.016Z
-heroImage: /558836764_1245071790971286_8257404489784041500_n.jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916215/site_contents/wva4ujpymtkh3wug8aqc.jpg
 author: Society of Information Technology Enthusiasts - USTP
 tags:
   - Announcement

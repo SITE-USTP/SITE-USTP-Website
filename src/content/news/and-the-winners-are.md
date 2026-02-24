@@ -3,7 +3,7 @@ title: And the Winners Are...!
 description: "After an exciting period of voting, the results are in! Congratulations to the talented IT students who made our 2025–2026 SITE T-Shirt Design Contest a huge success! \U0001F3C6"
 pubDate: 2025-12-13T11:37:18.904Z
 updatedDate: 2025-12-13T11:37:26.150Z
-heroImage: /600148464_1300381962106935_9170882210824471991_n.jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916216/site_contents/udm79uscphwazksfu2km.jpg
 author: Society of Information Technology Enthusiasts - USTP
 tags:
   - Announcement
