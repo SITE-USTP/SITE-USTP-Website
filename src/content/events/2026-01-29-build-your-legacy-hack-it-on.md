@@ -6,7 +6,7 @@ time: '10:00 AM - 5:00 PM'
 location: Makerspace LRC
 city: 'USTP, Cagayan de Oro City'
 registrationLink: 'https://forms.gle/bBNmBQm52Sk5vx568'
-heroImage: /619546311_1333953668749764_6585714988644351097_n (1).jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916219/site_contents/emnljedt2baqlklfqn2i.jpg
 ---
 
 The 𝗦𝗼𝗰𝗶𝗲𝘁𝘆 𝗼𝗳 𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻 𝗧𝗲𝗰𝗵𝗻𝗼𝗹𝗼𝗴𝘆 𝗘𝗻𝘁𝗵𝘂𝘀𝗶𝗮𝘀𝘁𝘀 and Department of Information Technology - USTP CDO introduces you to a 𝗵𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻 𝗯𝗮𝘁𝘁𝗹𝗲𝗴𝗿𝗼𝘂𝗻𝗱 at the edge of innovation, within the realm of solving relevant problems through innovative IT solutions. Within this arena, ideas collide, logic is refined, and creativity is honed under pressure.

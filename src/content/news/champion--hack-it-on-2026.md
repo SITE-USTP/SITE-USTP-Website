@@ -3,7 +3,7 @@ title: CHAMPION | HACK IT ON 2026!
 description: "Today, we celebrate more than just a win—we celebrate passion, perseverance, and purpose. Congratulations to \U0001D5E3\U0001D5E8\U0001D5E5\U0001D5E3\U0001D5DF\U0001D5D8 \U0001D5DB\U0001D5E2\U0001D5E8\U0001D5E6\U0001D5D8 for rising above the challenge and earning an outstanding \U0001D7F4\U0001D7F2%, claiming the prestigious \U0001D5D6\U0001D5F5\U0001D5EE\U0001D5F9\U0001D5F6\U0001D5F0\U0001D5F2 \U0001D5FC\U0001D5F3 \U0001D5D8\U0001D605\U0001D5F0\U0001D5F2\U0001D5F9\U0001D5F9\U0001D5F2\U0001D5FB\U0001D5F0\U0001D5F2."
 pubDate: 2026-01-31T11:44:33.727Z
 updatedDate: 2026-01-31T11:44:36.782Z
-heroImage: /625278943_1339126231565841_8759800767142974832_n.jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916220/site_contents/xhmbheosjnlz05m4hchf.jpg
 photoDescription: ''
 author: Society of Information Technology Enthusiasts - USTP
 tags:

@@ -3,7 +3,7 @@ title: FIRST RUNNER UP | HACK IT ON 2026
 description: "A massive congratulations to \U0001D5E5\U0001D5E2\U0001D5DC for securing \U0001D5D9\U0001D5F6\U0001D5FF\U0001D600\U0001D601 \U0001D5E5\U0001D602\U0001D5FB\U0001D5FB\U0001D5F2\U0001D5FF-\U0001D5E8\U0001D5FD in an unforgettable finale with the score of \U0001D7F4\U0001D7F1.\U0001D7F1%. "
 pubDate: 2026-01-31T01:55:24.667Z
 updatedDate: 2026-01-31T01:55:28.954Z
-heroImage: /624226016_1339127048232426_3314578128490164299_n.jpg
+heroImage: 'https://res.cloudinary.com/drpfhxljq/image/upload/v1771954957/site_contents/624226016_1339127048232426_3314578128490164299_n_xncvox.jpg'
 author: Society of Information Technology Enthusiasts - USTP
 tags:
   - Announcement

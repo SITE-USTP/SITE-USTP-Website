@@ -5,7 +5,7 @@ endDate: 2025-11-14T11:59:26.856Z
 location: USTP
 city: Cagayan de Oro City
 registrationLink: 'https://forms.gle/xxuTv7jUD2DhHtYD7'
-heroImage: /600148464_1300381962106935_9170882210824471991_n.jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916216/site_contents/udm79uscphwazksfu2km.jpg
 ---
 
 SITE is calling upon the next generation of tech creatives—to help us shape our next chapter. This isn't just a shirt design contest. It's your chance to create a symbol that will be worn by future innovators, breakthrough moments, and the brilliant minds shaping tomorrow's technology.

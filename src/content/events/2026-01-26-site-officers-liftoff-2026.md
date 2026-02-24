@@ -5,7 +5,7 @@ endDate: 2026-01-26T11:22:15.866Z
 time: '8:00 AM - 12:00 PM'
 location: 'Open Field, Basketball Court'
 city: 'USTP, Cagayan de Oro City'
-heroImage: /635108588_1352336726911458_6641708280316165286_n.jpg
+heroImage: https://res.cloudinary.com/drpfhxljq/image/upload/v1771916221/site_contents/uunke2qjhtknrz2cl3wz.jpg
 ---
 
 𝗧𝗵𝗲 𝘀𝘁𝗮𝗿𝘀 𝗵𝗮𝘃𝗲 𝗳𝗶𝗻𝗮𝗹𝗹𝘆 𝗮𝗹𝗶𝗴𝗻𝗲𝗱… 𝗜𝗧'𝗦 𝗧𝗜𝗠𝗘 𝗙𝗢𝗥 𝗟𝗜𝗙𝗧 𝗢𝗙𝗙 #2026! 🚀
