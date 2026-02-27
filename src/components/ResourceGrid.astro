@@ -15,42 +15,51 @@ const { resources } = Astro.props;
   >
     {
       resources.map((resource) => (
-        <div class="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-3 sm:p-6 flex flex-col h-full paginated-item">
-          <div class="flex items-center justify-between mb-4">
-            <span
-              class={`px-2 py-1 text-xs font-semibold rounded-full 
-          ${
-            resource.data.category === "Academic"
-              ? "bg-blue-100 text-blue-800"
-              : resource.data.category === "Software"
-                ? "bg-green-100 text-green-800"
-                : "bg-gray-100 text-gray-800"
-          }`}
-            >
-              {resource.data.category}
-            </span>
+        <div class="bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item">
+          <div class="h-24 sm:h-48 overflow-hidden bg-surface-muted flex-shrink-0">
+            {resource.data.heroImage ? (
+              <img
+                src={resource.data.heroImage}
+                alt={resource.data.title}
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+            ) : (
+              <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
+                <svg
+                  class="w-12 h-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+            )}
           </div>
-
-          <h3
-            class="text-sm sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2 line-clamp-2 md:truncate"
-            title={resource.data.title}
-          >
-            {resource.data.title}
-          </h3>
-
-          <p class="hidden sm:block text-sm text-gray-500 mb-4 flex-grow line-clamp-3">
-            {resource.data.description}
-          </p>
-
-          <a
-            href={resource.data.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center justify-center px-1 sm:px-4 py-2 border border-transparent text-xs sm:text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors w-full"
-          >
-            <span class="sm:hidden">Download</span>
-            <span class="hidden sm:inline">Download / View</span>
-          </a>
+          <div class="p-3 sm:p-5 flex flex-col flex-1">
+            <p class="text-xs font-medium text-primary mb-1">
+              {resource.data.category}
+            </p>
+            <h4 class="text-sm sm:text-lg font-bold text-text-main mb-1 sm:mb-2 line-clamp-2 leading-tight min-h-[2.5em]">
+              {resource.data.title}
+            </h4>
+            <p class="line-clamp-3 text-xs sm:text-sm text-text-muted mb-2 sm:mb-4 flex-grow-0">
+              {resource.data.description}
+            </p>
+            <div class="mt-auto">
+              <a
+                href={`/resources/${(resource as any).slug || resource.id}`}
+                class="text-xs sm:text-sm text-primary font-semibold hover:underline"
+              >
+                Read article &rarr;
+              </a>
+            </div>
+          </div>
         </div>
       ))
     }
@@ -106,51 +115,63 @@ const { resources } = Astro.props;
 <script>
   function initPagination() {
     const wrappers = document.querySelectorAll(".pagination-wrapper");
+    const searchInput = document.getElementById("search") as HTMLInputElement;
+
     wrappers.forEach((wrapper) => {
       const container = wrapper.querySelector(".paginated-container");
       if (!container) return;
-      const items = Array.from(
+      const allItems = Array.from(
         container.querySelectorAll(".paginated-item"),
       ) as HTMLElement[];
+
       const isMobile = window.innerWidth < 1024;
       const perPage = isMobile ? 6 : 9;
-      const totalPages = Math.ceil(items.length / perPage);
+      let visibleItems = [...allItems];
+      let totalPages = Math.ceil(visibleItems.length / perPage);
+      let currentPage = 1;
 
       const controls = wrapper.querySelector(
         ".pagination-controls",
       ) as HTMLElement;
-      if (totalPages <= 1) {
-        if (controls) controls.style.display = "none";
-        return;
-      }
-      if (controls) controls.classList.remove("hidden");
 
-      let currentPage = 1;
-      const prevBtn = controls.querySelector(
+      const prevBtn = controls?.querySelector(
         ".pagination-prev",
       ) as HTMLButtonElement;
-      const nextBtn = controls.querySelector(
+      const nextBtn = controls?.querySelector(
         ".pagination-next",
       ) as HTMLButtonElement;
-      const numbersContainer = controls.querySelector(".pagination-numbers");
-      const mobileText = controls.querySelector(".pagination-mobile-text");
+      const numbersContainer = controls?.querySelector(".pagination-numbers");
+      const mobileText = controls?.querySelector(".pagination-mobile-text");
 
       const render = () => {
-        items.forEach((item, index) => {
-          const start = (currentPage - 1) * perPage;
-          const end = start + perPage;
+        // First hide everything
+        allItems.forEach((item) => (item.style.display = "none"));
+
+        // Only show items for current page among visible items
+        const start = (currentPage - 1) * perPage;
+        const end = start + perPage;
+
+        visibleItems.forEach((item, index) => {
           if (index >= start && index < end) {
             item.style.display = "";
-          } else {
-            item.style.display = "none";
           }
         });
 
+        if (!controls) return;
+
+        if (totalPages <= 1) {
+          controls.style.display = "none";
+        } else {
+          controls.style.display = "";
+          controls.classList.remove("hidden");
+        }
+
         if (prevBtn) prevBtn.disabled = currentPage === 1;
-        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+        if (nextBtn)
+          nextBtn.disabled = currentPage === totalPages || totalPages === 0;
 
         if (mobileText) {
-          mobileText.textContent = `Page ${currentPage} of ${totalPages}`;
+          mobileText.textContent = `Page ${currentPage} of ${Math.max(1, totalPages)}`;
         }
 
         if (numbersContainer) {
@@ -176,7 +197,7 @@ const { resources } = Astro.props;
         }
       };
 
-      if (prevBtn)
+      if (prevBtn) {
         prevBtn.addEventListener("click", () => {
           if (currentPage > 1) {
             currentPage--;
@@ -187,7 +208,9 @@ const { resources } = Astro.props;
             });
           }
         });
-      if (nextBtn)
+      }
+
+      if (nextBtn) {
         nextBtn.addEventListener("click", () => {
           if (currentPage < totalPages) {
             currentPage++;
@@ -198,6 +221,23 @@ const { resources } = Astro.props;
             });
           }
         });
+      }
+
+      // Implement Search Logic
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          const query = (e.target as HTMLInputElement).value.toLowerCase();
+
+          visibleItems = allItems.filter((item) => {
+            const textContent = item.textContent?.toLowerCase() || "";
+            return textContent.includes(query);
+          });
+
+          totalPages = Math.ceil(visibleItems.length / perPage);
+          currentPage = 1;
+          render();
+        });
+      }
 
       render();
     });
