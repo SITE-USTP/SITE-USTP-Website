@@ -95,14 +95,14 @@ const formatMonthName = (date: Date | string) => {
     <Hero />
 
     <!-- About & SDGs Bento Section -->
-    <section class="py-12 md:py-16 bg-[#fafafa]">
+    <section class="py-12 md:py-16 bg-[#fafafa] reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-                class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 md:auto-rows-[180px]"
+                class="stagger-reveal grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 md:auto-rows-[180px]"
             >
                 <!-- Who Are We (Span 2x2) -->
                 <div
-                    class="col-span-2 md:col-span-2 md:row-span-2 bg-white rounded-[2rem] p-6 sm:p-8 shadow-sm flex flex-col border border-gray-100 overflow-hidden"
+                    class="motion-card col-span-2 md:col-span-2 md:row-span-2 bg-white rounded-[2rem] p-6 sm:p-8 shadow-sm flex flex-col border border-gray-100 overflow-hidden"
                 >
                     <div
                         class="w-fit px-3 py-1.5 rounded-full bg-[#e8f0fe] text-blue-600 font-bold text-xs mb-4 sm:mb-6 flex items-center gap-2 shrink-0"
@@ -136,7 +136,7 @@ const formatMonthName = (date: Date | string) => {
                     <div class="mt-4 sm:mt-6 shrink-0">
                         <a
                             href="/about"
-                            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-bold rounded-full text-white bg-[#0f172a] hover:bg-[#1e293b] transition-colors shadow-sm"
+                            class="motion-button inline-flex items-center justify-center px-6 py-3 border border-transparent text-sm font-bold rounded-full text-white bg-[#0f172a] hover:bg-[#1e293b] shadow-sm"
                         >
                             More About Us &rarr;
                         </a>
@@ -145,7 +145,7 @@ const formatMonthName = (date: Date | string) => {
 
                 <!-- SDG Commitment Card (Blue, Span 2x1) -->
                 <div
-                    class="col-span-2 md:col-span-2 md:row-span-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-[2rem] p-6 shadow-sm flex flex-col justify-center relative overflow-hidden"
+                    class="motion-card col-span-2 md:col-span-2 md:row-span-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-[2rem] p-6 shadow-sm flex flex-col justify-center relative overflow-hidden"
                 >
                     <div
                         class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 md:mb-4 relative z-10 gap-3 px-2"
@@ -184,7 +184,7 @@ const formatMonthName = (date: Date | string) => {
 
                 <!-- Mission (Span 1x1, Yellow) -->
                 <div
-                    class="col-span-1 md:col-span-1 md:row-span-1 bg-[#fbbf24] rounded-[2rem] p-4 sm:p-6 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group aspect-square md:aspect-auto"
+                    class="motion-card col-span-1 md:col-span-1 md:row-span-1 bg-[#fbbf24] rounded-[2rem] p-4 sm:p-6 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group aspect-square md:aspect-auto"
                 >
                     <h3
                         class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-2 relative z-10"
@@ -200,7 +200,7 @@ const formatMonthName = (date: Date | string) => {
 
                 <!-- Vision (Span 1x1, Dark) -->
                 <div
-                    class="col-span-1 md:col-span-1 md:row-span-1 bg-[#0f172a] rounded-[2rem] p-4 sm:p-6 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group aspect-square md:aspect-auto"
+                    class="motion-card col-span-1 md:col-span-1 md:row-span-1 bg-[#0f172a] rounded-[2rem] p-4 sm:p-6 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden group aspect-square md:aspect-auto"
                 >
                     <h3
                         class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 relative z-10"
@@ -218,7 +218,7 @@ const formatMonthName = (date: Date | string) => {
     </section>
 
     <!-- Content Feeds Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50 reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Upcoming Events Row -->
             <div class="mb-16">
@@ -238,13 +238,13 @@ const formatMonthName = (date: Date | string) => {
                 </div>
 
                 <div
-                    class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
+                    class="stagger-reveal grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
                 >
                     {
                         upcomingEvents.map((event, index) => (
                             <a
                                 href={`/events/${event.id}/`}
-                                class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 h-full"
+                                class="motion-card group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full"
                             >
                                 <div class="relative w-full aspect-video overflow-hidden bg-gray-100 flex-shrink-0">
                                     {event.data.heroImage ? (
@@ -319,17 +319,20 @@ const formatMonthName = (date: Date | string) => {
                 </div>
 
                 <div
-                    class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
+                    class="stagger-reveal grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
                 >
                     {
                         recentNews.map((post) => (
-                            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full">
+                            <a
+                                href={`/news/${post.id}`}
+                                class="motion-card group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col h-full"
+                            >
                                 <div class="h-24 sm:h-48 overflow-hidden bg-gray-100 flex-shrink-0">
                                     {post.data.heroImage ? (
                                         <img
                                             src={post.data.heroImage}
                                             alt={post.data.title}
-                                            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
                                     ) : (
                                         <div class="w-full h-full flex items-center justify-center text-gray-400">
@@ -358,16 +361,8 @@ const formatMonthName = (date: Date | string) => {
                                     <h4 class="text-sm sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 line-clamp-2 leading-tight min-h-[2.5em]">
                                         {post.data.title}
                                     </h4>
-                                    <div class="mt-auto">
-                                        <a
-                                            href={`/news/${post.id}`}
-                                            class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline"
-                                        >
-                                            Read article &rarr;
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     }
                 </div>
@@ -411,9 +406,9 @@ const formatMonthName = (date: Date | string) => {
                             </p>
                         </div>
                     ) : (
-                        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
+                        <div class="stagger-reveal grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
                             {recentDocuments.map((doc) => (
-                                <div class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 h-full">
+                                <div class="motion-card group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
                                     {/* Colored top accent bar */}
                                     <div
                                         class={`h-1.5 w-full flex-shrink-0 ${doc.color.bar}`}
@@ -486,7 +481,7 @@ const formatMonthName = (date: Date | string) => {
                                         <div class="flex gap-2">
                                             <button
                                                 data-preview-url={doc.file}
-                                                class="home-doc-preview-btn flex-shrink-0 inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-600 hover:text-blue-600 text-xs font-semibold transition-colors duration-200"
+                                                class="home-doc-preview-btn motion-button flex-shrink-0 inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-600 hover:text-blue-600 text-xs font-semibold"
                                                 title="Preview"
                                             >
                                                 <svg
@@ -515,7 +510,7 @@ const formatMonthName = (date: Date | string) => {
                                             <a
                                                 href={doc.downloadUrl}
                                                 download
-                                                class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gray-900 hover:bg-blue-600 text-white text-xs font-bold transition-colors duration-200 shadow-sm"
+                                                class="motion-button flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-gray-900 hover:bg-blue-600 text-white text-xs font-bold shadow-sm"
                                             >
                                                 <svg
                                                     class="w-3.5 h-3.5"
@@ -561,12 +556,15 @@ const formatMonthName = (date: Date | string) => {
                         /* Horizontal scrollable container for the 'carousel' effect on smaller screens */
                     }
                     <div
-                        class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
+                        class="stagger-reveal grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8"
                     >
                         {
                             recentResources.map((resource) => (
                                 <div class="w-full">
-                                    <div class="bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item">
+                                    <a
+                                        href={`/resources/${(resource as any).slug || resource.id}`}
+                                        class="motion-card group bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col h-full paginated-item"
+                                    >
                                         <div class="h-24 sm:h-32 lg:h-40 overflow-hidden bg-surface-muted flex-shrink-0">
                                             {resource.data.heroImage ? (
                                                 <img
@@ -574,7 +572,7 @@ const formatMonthName = (date: Date | string) => {
                                                         resource.data.heroImage
                                                     }
                                                     alt={resource.data.title}
-                                                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                                 />
                                             ) : (
                                                 <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
@@ -601,16 +599,8 @@ const formatMonthName = (date: Date | string) => {
                                             <h4 class="text-sm sm:text-lg font-bold text-text-main mb-3 sm:mb-4 line-clamp-2 leading-tight min-h-[2.5em]">
                                                 {resource.data.title}
                                             </h4>
-                                            <div class="mt-auto">
-                                                <a
-                                                    href={`/resources/${(resource as any).slug || resource.id}`}
-                                                    class="text-xs sm:text-sm text-primary font-semibold hover:underline"
-                                                >
-                                                    Read article &rarr;
-                                                </a>
-                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             ))
                         }

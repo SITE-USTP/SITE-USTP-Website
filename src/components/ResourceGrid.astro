@@ -10,18 +10,21 @@ const { resources } = Astro.props;
 
 <div class="pagination-wrapper w-full mt-8">
   <div
-    class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 paginated-container"
+    class="stagger-reveal grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 paginated-container"
     data-per-page="6"
   >
     {
       resources.map((resource) => (
-        <div class="bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item">
+        <a
+          href={`/resources/${(resource as any).slug || resource.id}`}
+          class="motion-card group bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col h-full paginated-item"
+        >
           <div class="h-24 sm:h-48 overflow-hidden bg-surface-muted flex-shrink-0">
             {resource.data.heroImage ? (
               <img
                 src={resource.data.heroImage}
                 alt={resource.data.title}
-                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                class="motion-image w-full h-full object-cover"
               />
             ) : (
               <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
@@ -51,16 +54,8 @@ const { resources } = Astro.props;
             <p class="line-clamp-3 text-xs sm:text-sm text-text-muted mb-2 sm:mb-4 flex-grow-0">
               {resource.data.description}
             </p>
-            <div class="mt-auto">
-              <a
-                href={`/resources/${(resource as any).slug || resource.id}`}
-                class="text-xs sm:text-sm text-primary font-semibold hover:underline"
-              >
-                Read article &rarr;
-              </a>
-            </div>
           </div>
-        </div>
+        </a>
       ))
     }
   </div>
@@ -71,7 +66,7 @@ const { resources } = Astro.props;
       aria-label="Pagination"
     >
       <button
-        class="pagination-prev relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        class="pagination-prev motion-button relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span class="sr-only">Previous</span>
         <svg
@@ -93,7 +88,7 @@ const { resources } = Astro.props;
         Page 1
       </span>
       <button
-        class="pagination-next relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        class="pagination-next motion-button relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span class="sr-only">Next</span>
         <svg

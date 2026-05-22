@@ -9,11 +9,11 @@ import siteLogo from "../assets/SITE-logo.png";
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <a href="/" class="flex items-center gap-2">
+                <a href="/" class="flex items-center gap-2 motion-link">
                     <img
                         src={siteLogo.src}
                         alt="SITE Logo"
-                        class="h-10 w-auto"
+                        class="h-10 w-auto transition-transform duration-300 ease-out hover:scale-105"
                     />
                 </a>
             </div>
@@ -22,32 +22,32 @@ import siteLogo from "../assets/SITE-logo.png";
             <nav class="hidden md:flex space-x-8">
                 <a
                     href="/"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >Home</a
                 >
                 <a
                     href="/events"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >Events</a
                 >
                 <a
                     href="/news"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >News</a
                 >
                 <a
                     href="/documents"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >Documents</a
                 >
                 <a
                     href="/resources"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >Resources</a
                 >
                 <a
                     href="/officers"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary transition-colors"
+                    class="motion-link px-3 py-2 rounded-md text-sm font-medium text-text-muted hover:text-primary hover:bg-surface-accent/70"
                     >Officers</a
                 >
             </nav>
@@ -56,7 +56,7 @@ import siteLogo from "../assets/SITE-logo.png";
             <div class="flex md:hidden">
                 <button
                     type="button"
-                    class="mobile-menu-btn text-gray-500 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 rounded-md p-2"
+                    class="mobile-menu-btn motion-button text-gray-500 hover:bg-gray-100 rounded-md p-2"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
                 >
@@ -104,32 +104,32 @@ import siteLogo from "../assets/SITE-logo.png";
         <div class="py-2 flex flex-col">
             <a
                 href="/"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >Home</a
             >
             <a
                 href="/events"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >Events</a
             >
             <a
                 href="/news"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >News</a
             >
             <a
                 href="/documents"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >Documents</a
             >
             <a
                 href="/resources"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >Resources</a
             >
             <a
                 href="/officers"
-                class="text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium transition-colors"
+                class="motion-link text-gray-700 hover:text-blue-600 hover:bg-gray-50 px-4 py-2.5 text-sm font-medium"
                 >Officers</a
             >
         </div>

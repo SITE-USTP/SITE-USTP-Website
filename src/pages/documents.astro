@@ -71,7 +71,7 @@ const years = [
     <div class="bg-gray-50 min-h-screen py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Page Header — consistent with Officers / Resources -->
-            <div class="text-center mb-10">
+            <div class="text-center mb-10 reveal-on-scroll">
                 <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                     Organizations Transparency
                 </h1>
@@ -83,7 +83,7 @@ const years = [
 
             <!-- Search + Filter Bar -->
             <div
-                class="bg-white rounded-xl shadow-sm border border-gray-200 px-4 sm:px-6 py-4 mb-6"
+                class="reveal-on-scroll bg-white rounded-xl shadow-sm border border-gray-200 px-4 sm:px-6 py-4 mb-6 transition-shadow duration-300 focus-within:shadow-md"
             >
                 <div class="flex flex-col sm:flex-row gap-3">
                     <!-- Search input -->
@@ -109,14 +109,14 @@ const years = [
                             id="doc-search"
                             type="text"
                             placeholder="Search documents by title or description..."
-                            class="block w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            class="motion-link block w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
                     <!-- Category filter -->
                     <div class="relative">
                         <select
                             id="doc-filter-category"
-                            class="appearance-none block w-full pl-3 pr-8 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            class="motion-link appearance-none block w-full pl-3 pr-8 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                         >
                             <option value="">All Categories</option>
                             {
@@ -146,7 +146,7 @@ const years = [
                     <div class="relative">
                         <select
                             id="doc-filter-year"
-                            class="appearance-none block w-full pl-3 pr-8 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            class="motion-link appearance-none block w-full pl-3 pr-8 py-2.5 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                         >
                             <option value="">All Years</option>
                             {
@@ -222,12 +222,12 @@ const years = [
                             </tr>
                         </thead>
                         <tbody
-                            class="block md:table-row-group flex flex-col gap-4 md:gap-0 bg-transparent md:bg-white md:divide-y md:divide-gray-100"
+                            class="stagger-reveal block md:table-row-group flex flex-col gap-4 md:gap-0 bg-transparent md:bg-white md:divide-y md:divide-gray-100"
                         >
                             {
                                 documents.map((doc) => (
                                     <tr
-                                        class="document-row block md:table-row bg-white border border-gray-200 md:border-none rounded-xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none hover:bg-gray-50 transition-colors relative"
+                                        class="document-row block md:table-row bg-white border border-gray-200 md:border-none rounded-xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none hover:bg-gray-50 transition-colors duration-200 ease-out relative"
                                         data-title={(
                                             doc.title ?? ""
                                         ).toLowerCase()}
@@ -339,7 +339,7 @@ const years = [
                                             <div class="flex items-center justify-end gap-2">
                                                 <button
                                                     data-doc-url={doc.file}
-                                                    class="view-doc-btn inline-flex items-center justify-center text-primary md:text-text-dim hover:bg-surface-muted md:hover:text-text-main bg-transparent md:bg-surface-muted md:hover:bg-surface-accent p-2 rounded-full md:rounded-md transition-colors border-none md:border md:border-border-muted"
+                                                    class="view-doc-btn motion-button inline-flex items-center justify-center text-primary md:text-text-dim hover:bg-surface-muted md:hover:text-text-main bg-transparent md:bg-surface-muted md:hover:bg-surface-accent p-2 rounded-full md:rounded-md border-none md:border md:border-border-muted"
                                                 >
                                                     <span class="sr-only">
                                                         View
@@ -369,7 +369,7 @@ const years = [
                                                         doc.file,
                                                     )}
                                                     download
-                                                    class="inline-flex items-center justify-center text-primary md:text-text-on-primary bg-transparent hover:bg-surface-muted md:bg-primary md:hover:bg-primary-hover p-2 rounded-full md:rounded-md transition-colors md:shadow-sm"
+                                                    class="motion-button inline-flex items-center justify-center text-primary md:text-text-on-primary bg-transparent hover:bg-surface-muted md:bg-primary md:hover:bg-primary-hover p-2 rounded-full md:rounded-md md:shadow-sm"
                                                 >
                                                     <span class="sr-only">
                                                         Download
@@ -405,7 +405,7 @@ const years = [
                         <span class="mr-2">Show</span>
                         <select
                             id="per-page-select"
-                            class="border border-gray-300 rounded-md text-gray-500 text-sm py-1 px-2 pr-6 focus:ring-blue-500 focus:border-blue-500"
+                            class="motion-link border border-gray-300 rounded-md text-gray-500 text-sm py-1 px-2 pr-6 focus:ring-blue-500 focus:border-blue-500"
                         >
                             <option>10</option>
                             <option>20</option>
@@ -423,7 +423,7 @@ const years = [
                             aria-label="Pagination"
                         >
                             <button
-                                class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                class="motion-button relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                             >
                                 <span class="sr-only">Previous</span>
                                 <svg
@@ -440,12 +440,12 @@ const years = [
                                 </svg>
                             </button>
                             <button
-                                class="relative inline-flex items-center px-4 py-2 border border-blue-500 bg-blue-600 text-sm font-medium text-white hover:bg-blue-700"
+                                class="motion-button relative inline-flex items-center px-4 py-2 border border-blue-500 bg-blue-600 text-sm font-medium text-white hover:bg-blue-700"
                             >
                                 1
                             </button>
                             <button
-                                class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                class="motion-button relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                             >
                                 <span class="sr-only">Next</span>
                                 <svg
@@ -497,13 +497,13 @@ const years = [
                             href="#"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-sm font-medium text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors"
+                            class="motion-button text-sm font-medium text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg"
                         >
                             Open in New Tab
                         </a>
                         <button
                             id="doc-modal-close"
-                            class="text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            class="motion-button text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100"
                         >
                             <span class="sr-only">Close</span>
                             <svg
