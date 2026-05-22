@@ -23,7 +23,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
 
 <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 reveal-on-scroll">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">
                     Officer Picture Manager
@@ -34,7 +34,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
             </div>
             <button
                 id="logoutBtn"
-                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                class="motion-button inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
             >
                 Logout
             </button>
@@ -43,7 +43,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Sidebar / List of Officers -->
             <div
-                class="bg-white rounded-lg shadow overflow-hidden flex flex-col h-[600px]"
+                class="reveal-on-scroll bg-white rounded-lg shadow overflow-hidden flex flex-col h-[600px] transition-shadow duration-300 hover:shadow-md"
             >
                 <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -56,7 +56,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                         type="text"
                         id="searchOfficerInput"
                         placeholder="Search officer name..."
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                        class="motion-link w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                     />
                 </div>
                 <div class="overflow-y-auto flex-1 p-2 space-y-4" id="officersListContainer">
@@ -70,10 +70,10 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                                     <span class="mr-2">{dept.emoji}</span>
                                     {dept.name}
                                 </div>
-                                <ul class="space-y-1">
+                                <ul class="stagger-reveal space-y-1">
                                     {dept.members.map((member) => (
                                         <li
-                                            class="officer-item hover:bg-blue-50 cursor-pointer p-3 rounded-md transition duration-150 ease-in-out border-l-4 border-transparent flex items-center space-x-3 group"
+                                            class="officer-item motion-button hover:bg-blue-50 cursor-pointer p-3 rounded-md border-l-4 border-transparent flex items-center space-x-3 group"
                                             data-name={member.name}
                                             data-position={member.position}
                                             data-dept={dept.name}
@@ -107,7 +107,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
             <!-- Main Content / Edit Area -->
             <div class="md:col-span-2 space-y-6">
                 <div
-                    class="bg-white rounded-lg shadow px-4 py-5 sm:p-6 hidden"
+                    class="bg-white rounded-lg shadow px-4 py-5 sm:p-6 hidden transition-all duration-300 ease-out"
                     id="editArea"
                 >
                     <div class="border-b border-gray-200 pb-4 mb-4">
@@ -138,7 +138,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                             <input
                                 id="positionInput"
                                 type="text"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                class="motion-link w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                         <div>
@@ -150,7 +150,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                             <input
                                 id="nameInput"
                                 type="text"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                                class="motion-link w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                             />
                         </div>
                     </div>
@@ -181,7 +181,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                                 >Upload New Image</label
                             >
                             <div
-                                class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-blue-500 transition-colors cursor-pointer group"
+                                class="motion-card mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-blue-500 cursor-pointer group"
                                 id="dropZone"
                             >
                                 <div class="space-y-1 text-center">
@@ -227,7 +227,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                             <button
                                 id="saveBtn"
                                 type="button"
-                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                class="motion-button inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 Save Changes
                             </button>
@@ -237,7 +237,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
 
                 <div
                     id="emptyState"
-                    class="bg-white rounded-lg shadow px-4 py-12 flex flex-col items-center justify-center text-center h-full max-h-[400px]"
+                    class="reveal-on-scroll bg-white rounded-lg shadow px-4 py-12 flex flex-col items-center justify-center text-center h-full max-h-[400px] transition-shadow duration-300 hover:shadow-md"
                 >
                     <svg
                         class="h-16 w-16 text-gray-300 mb-4"
@@ -577,6 +577,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
             const originalText = saveBtn.textContent;
             saveBtn.textContent = "Saving...";
             saveBtn.disabled = true;
+            saveBtn.classList.add("animate-pulse");
 
             try {
                 const { member } = findOfficer(deptName, oldName);
@@ -665,6 +666,7 @@ const officersDataJson = JSON.stringify(activeOfficersData).replace(/</g, "\\u00
                 // Reset UI
                 saveBtn.textContent = originalText;
                 saveBtn.disabled = false;
+                saveBtn.classList.remove("animate-pulse");
             }
         });
     }

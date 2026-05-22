@@ -35,6 +35,7 @@
 
 :root {
   --site-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --site-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -56,5 +57,57 @@
   h5,
   h6 {
     @apply font-heading font-bold text-text-main;
+  }
+}
+
+@layer utilities {
+  .motion-card {
+    @apply transition-all duration-300 ease-out will-change-transform hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2;
+  }
+
+  .motion-button {
+    @apply transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2;
+  }
+
+  .motion-link {
+    @apply transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2;
+  }
+
+  .motion-image {
+    @apply transition-transform duration-500 ease-out will-change-transform group-hover:scale-105;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 520ms var(--site-ease-out),
+      transform 520ms var(--site-ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

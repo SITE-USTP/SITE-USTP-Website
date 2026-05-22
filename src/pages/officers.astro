@@ -34,7 +34,7 @@ try {
     <div class="bg-gray-50 min-h-screen py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 reveal-on-scroll">
                 <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
                     Meet the Team
                 </h1>
@@ -48,7 +48,7 @@ try {
                 <!-- Search Input -->
                 <div class="mt-8 max-w-xl mx-auto">
                     <label for="searchOfficerPublic" class="sr-only">Search officers</label>
-                    <div class="relative rounded-md shadow-sm">
+                    <div class="relative rounded-md shadow-sm transition-shadow duration-200 focus-within:shadow-md">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -58,7 +58,7 @@ try {
                             type="text"
                             id="searchOfficerPublic"
                             placeholder="Search for an officer..."
-                            class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md bg-gray-50 p-3"
+                            class="motion-link focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md bg-gray-50 p-3"
                         />
                     </div>
                 </div>
@@ -67,7 +67,7 @@ try {
             <!-- Departments -->
             <div class="space-y-16" id="departmentsContainer">
                 {departments.map((department) => (
-                    <section class="dept-section">
+                    <section class="dept-section reveal-on-scroll">
                         <!-- Department Header -->
                         <div class="flex items-center gap-3 mb-8">
                             <span class="text-3xl">{department.emoji}</span>
@@ -78,10 +78,10 @@ try {
                         </div>
 
                         <!-- Officers Grid -->
-                        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
+                        <div class="stagger-reveal grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
                             {department.members.map((member) => (
                                 <div 
-                                    class="officer-card group bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+                                    class="officer-card motion-card group bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-blue-300 hover:shadow-blue-500/10"
                                     data-name={member.name}
                                     data-position={member.position}
                                 >
@@ -93,7 +93,7 @@ try {
                                                 alt={member.name} 
                                                 loading="lazy"
                                                 decoding="async"
-                                                class="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                                                class="motion-image h-full w-full object-cover object-top"
                                             />
                                         ) : (
                                             <div class="flex items-center justify-center h-full text-slate-300 group-hover:text-slate-400 transition-colors">
