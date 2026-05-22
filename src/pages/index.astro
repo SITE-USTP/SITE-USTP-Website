@@ -323,13 +323,16 @@ const formatMonthName = (date: Date | string) => {
                 >
                     {
                         recentNews.map((post) => (
-                            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full">
+                            <a
+                                href={`/news/${post.id}`}
+                                class="group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full"
+                            >
                                 <div class="h-24 sm:h-48 overflow-hidden bg-gray-100 flex-shrink-0">
                                     {post.data.heroImage ? (
                                         <img
                                             src={post.data.heroImage}
                                             alt={post.data.title}
-                                            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
                                     ) : (
                                         <div class="w-full h-full flex items-center justify-center text-gray-400">
@@ -358,16 +361,8 @@ const formatMonthName = (date: Date | string) => {
                                     <h4 class="text-sm sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 line-clamp-2 leading-tight min-h-[2.5em]">
                                         {post.data.title}
                                     </h4>
-                                    <div class="mt-auto">
-                                        <a
-                                            href={`/news/${post.id}`}
-                                            class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline"
-                                        >
-                                            Read article &rarr;
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     }
                 </div>
@@ -566,7 +561,10 @@ const formatMonthName = (date: Date | string) => {
                         {
                             recentResources.map((resource) => (
                                 <div class="w-full">
-                                    <div class="bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item">
+                                    <a
+                                        href={`/resources/${(resource as any).slug || resource.id}`}
+                                        class="group bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item"
+                                    >
                                         <div class="h-24 sm:h-32 lg:h-40 overflow-hidden bg-surface-muted flex-shrink-0">
                                             {resource.data.heroImage ? (
                                                 <img
@@ -574,7 +572,7 @@ const formatMonthName = (date: Date | string) => {
                                                         resource.data.heroImage
                                                     }
                                                     alt={resource.data.title}
-                                                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                                 />
                                             ) : (
                                                 <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
@@ -601,16 +599,8 @@ const formatMonthName = (date: Date | string) => {
                                             <h4 class="text-sm sm:text-lg font-bold text-text-main mb-3 sm:mb-4 line-clamp-2 leading-tight min-h-[2.5em]">
                                                 {resource.data.title}
                                             </h4>
-                                            <div class="mt-auto">
-                                                <a
-                                                    href={`/resources/${(resource as any).slug || resource.id}`}
-                                                    class="text-xs sm:text-sm text-primary font-semibold hover:underline"
-                                                >
-                                                    Read article &rarr;
-                                                </a>
-                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             ))
                         }

@@ -5,14 +5,25 @@ import { db } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { getOptimizedImage } from "../lib/cloudinary";
 
-const { academicYear, departments } = officersData;
+let activeOfficersData = officersData;
+try {
+    const officersDocRef = doc(db, "settings", "officersData");
+    const officersDocSnap = await getDoc(officersDocRef);
+    if (officersDocSnap.exists()) {
+        activeOfficersData = officersDocSnap.data() as typeof officersData;
+    }
+} catch (e) {
+    console.error("Failed to fetch officer data:", e);
+}
 
-let officerProfilePictures: any = {};
+const { academicYear, departments } = activeOfficersData;
+
+let officerProfilePictures: Record<string, string> = {};
 try {
     const docRef = doc(db, "settings", "officerProfilePictures");
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        officerProfilePictures = docSnap.data();
+        officerProfilePictures = docSnap.data() as Record<string, string>;
     }
 } catch (e) {
     console.error("Failed to fetch officer pictures:", e);

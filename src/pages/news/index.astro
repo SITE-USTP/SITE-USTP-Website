@@ -29,13 +29,16 @@ const posts = (await getCollection("news")).sort(
                 >
                     {
                         posts.map((post) => (
-                            <div class="bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item">
+                            <a
+                                href={`/news/${post.id}/`}
+                                class="group bg-surface-card rounded-lg shadow-sm border border-border-base overflow-hidden flex flex-col hover:shadow-md transition-shadow h-full paginated-item"
+                            >
                                 <div class="h-24 sm:h-48 overflow-hidden bg-surface-muted flex-shrink-0">
                                     {post.data.heroImage ? (
                                         <img
                                             src={post.data.heroImage}
                                             alt={post.data.title}
-                                            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
                                     ) : (
                                         <div class="w-full h-full flex items-center justify-center text-gray-400">
@@ -67,16 +70,8 @@ const posts = (await getCollection("news")).sort(
                                     <p class="line-clamp-3 text-xs sm:text-sm text-text-muted mb-2 sm:mb-4 flex-grow-0">
                                         {post.data.description}
                                     </p>
-                                    <div class="mt-auto">
-                                        <a
-                                            href={`/news/${post.id}/`}
-                                            class="text-xs sm:text-sm text-primary font-semibold hover:underline"
-                                        >
-                                            Read article &rarr;
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     }
                 </div>
