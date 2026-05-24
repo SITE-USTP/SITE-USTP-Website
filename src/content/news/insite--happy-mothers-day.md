@@ -6,6 +6,7 @@ updatedDate: 2026-05-10T09:06:19.378Z
 heroImage: 'https://res.cloudinary.com/drpfhxljq/image/upload/v1779613601/site_contents/690685762_1652783319298403_6820496952009928497_n_sriixl.jpg'
 author: Society of Information Technology Enthusiasts - USTP
 tags:
+  - Announcement
   - HappyMothersDay
   - BSIT
   - USTPCDO
@@ -16,4 +17,4 @@ Like the motherboard that keeps every component connected and functioning, mothe
 
 Today, we honor the women who continuously power our lives with unconditional love and endless dedication. Thank you for being our source of comfort, motivation, and inspiration every single day.
 
-To all amazing moms out there — Happy Mother’s Day! 
+To all amazing moms out there — Happy Mother’s Day!
