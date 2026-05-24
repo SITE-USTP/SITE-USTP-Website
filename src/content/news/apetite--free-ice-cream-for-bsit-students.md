@@ -6,6 +6,7 @@ heroImage: 'https://res.cloudinary.com/drpfhxljq/image/upload/v1779612958/site_c
 photoDescription: ''
 author: Society of Information Technology Enthusiasts - USTP
 tags:
+  - Announcement
   - BSIT
   - USTPCDO
   - SITE
